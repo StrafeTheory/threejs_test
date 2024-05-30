@@ -849,8 +849,8 @@ function load_model()
     loading_panel.style.display = 'block';
 
     gltf_loader.load(
-        //'../synode_202_assets_others_3d_General_Final_119.glb',
-        '../Ex3_snapping.glb',
+        //'./synode_202_assets_others_3d_General_Final_119.glb',
+        './Ex3_snapping.glb',
         (gltf) => {
             loading_panel.style.display = 'none';
 
