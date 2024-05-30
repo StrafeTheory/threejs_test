@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Three Test</title>
+<style>
+    html, body {
+       margin: 0;
+       height: 100%;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+
+    #c {
+        width:100%;
+        height:100%;
+        display:block;
+    }
+
+    #lbl_instruct {
+        position:fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align:center;
+        background-color:black;
+        color:white;
+        padding:5px;
+        border:1px solid white;
+
+    }
+
+    #panel_loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    #loading-bar {
+        width: 300px;
+        height: 20px;
+        background: #000;
+        border: 1px solid #000;
+        position: relative;
+        margin: 10px 0;
+    }
+    #loading-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: #00ff00;
+        transition: width 0.2s;
+    }
+
+    #controls {
+        position:absolute;
+        left:0px;
+        top:20px;
+        color:#fff;
+        width:150px;
+        background-color:#222;
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+        font-size:12px;
+    }
+
+    button {
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+        font-size:12px;
+        /*border-style:none;*/
+        border: 1px solid black;
+        width:100%;
+        color: #fff;
+        background-color: #444;
+        margin-bottom:1px;
+        margin-top:1px;
+    }
+
+    button:hover {
+        /*border-style:none;*/
+        width:100%;
+        background-color: #999;
+    }
+
+
+    button.option {
+        color:#aaa;
+        background-color:#444;
+    }
+
+    button.option.selected {
+        color: #000;
+        background-color: #0aa;
+    }
+
+    button.option:hover:enabled {
+        color: #000;
+        background-color: #0aa;
+    }
+
+    button.option.selected:disabled {
+        color: #000;
+        background-color: #055;
+    }
+
+    button:disabled {
+        color:#444;
+        background-color:#222;
+    }
+
+    #controls .header {
+        background-color:black;
+        text-align:center;
+        border-top:1px solid black;
+        border-bottom:1px solid black;
+    }
+
+    #controls .panel {
+        border:1px solid grey;
+        margin:2px;
+    }
+
+</style>
+    </head>
+    <body>
+        <canvas id="c"> </canvas>
+        <div id="lbl_instruct"></div>
+        <div id="panel_loading" style="display:none">
+            <div id="loading-bar">
+                <div id="loading-bar-fill"></div>
+            </div>
+            <div id="loading-text"></div>
+        </div>
+        <div id="controls">
+            <button id="btn_load">Load Model</button>
+            <div class="panel">
+                <div class="header">Edit Mode</div>
+                <button id="btn_object" style="width:48%" class="selected option">Object</button>
+                <button id="btn_vertex" style="width:48%" class="option">Vertex</button>
+            </div>
+            <div class="panel">
+                <button id="btn_select" class="option">Select</button>
+                <button id="btn_lasso" class="option">Lasso Select</button>
+            </div>
+            <div class="panel">
+                <div id="lbl_selected_nodes" class="header">Selected Nodes: 0</div>
+                <div id="lbl_selected_verts" class="header">Selected Vertices: 0</div>
+                <button id="btn_clear">Clear Selection</button>
+                <button id="btn_split">Split Object</button>
+                <button id="btn_join">Join Objects</button>
+                <button id="btn_merge_vertex">Merge Vertices</button>
+                <div class="panel" id="panel_snap">
+                    <button id="btn_snap_to" class="option">Snap To</button>
+                    <button id="btn_snap_mode_face" class="option" style="width:48%">Face</button>
+                    <button id="btn_snap_mode_vertex" class="option" style="width:48%">Vertex</button>
+                    <input type="checkbox" id="chk_snap_align_rotation"/><label for="chk_snap_align_rotation">Align Rotation to Target</label>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.19.2/dist/lil-gui.umd.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lil-gui@0.19.2/dist/lil-gui.min.css" rel="stylesheet">
+
+    <script type="importmap">
+        {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+    }
+  }
+    </script>
+
+    <script src="./main.js" type="module"></script>
+</html>
